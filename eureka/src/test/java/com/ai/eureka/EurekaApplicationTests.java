@@ -11,7 +11,7 @@ public class EurekaApplicationTests {
 
 	@Test
 	public void contextLoads() {
-		System.out.println("wql3");
+		System.out.println("wql4");
 	}
 
 }
