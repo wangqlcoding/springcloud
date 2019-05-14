@@ -12,7 +12,4 @@ public class EurekaApplication {
 		SpringApplication.run(EurekaApplication.class, args);
 	}
 
-	public static void main2(String[] args) {
-
-	}
 }
