@@ -7,6 +7,7 @@ import com.netflix.zuul.exception.ZuulException;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * @Auther: wangql
@@ -14,11 +15,8 @@ import javax.servlet.http.HttpServletRequest;
  * @Description:
  */
 @Component
-public class TokenFilter extends ZuulFilter{
-    @Override
-    public boolean shouldFilter() {
-        return true;
-    }
+public class TokenFilter extends ZuulFilter {
+
 
     @Override
     public boolean isStaticFilter() {
@@ -45,6 +43,11 @@ public class TokenFilter extends ZuulFilter{
         return super.compareTo(filter);
     }
 
+    @Override
+    public boolean shouldFilter() {
+        return false;
+    }
+
     //业务逻辑
     @Override
     public Object run() throws ZuulException {
@@ -52,7 +55,8 @@ public class TokenFilter extends ZuulFilter{
         RequestContext context = RequestContext.getCurrentContext();//获取当前上下文
         //获取request
         HttpServletRequest request = context.getRequest();
-
+        HttpServletRequest req;
+        HttpServletResponse resp;
         //获取token
         String userTokten = request.getParameter("userTokten");
         return null;

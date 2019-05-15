@@ -2,23 +2,25 @@ package com.ai.controller;
 
 import com.ai.feign.OrderFeign;
 import com.ai.service.UserService;
-import com.netflix.discovery.converters.Auto;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Auther: wangql
  * @Date: 2019/4/22 19:48
  * @Description:
  */
+@Api("UserController")
 @RestController
 @RequestMapping("/user")
 public class UserController {
 
     @Autowired
     private UserService userService;
+
 
     @RequestMapping("/getUser")
     public String getUser() {
@@ -35,10 +37,17 @@ public class UserController {
     @Autowired
     private OrderFeign orderFeign;
 
-    @RequestMapping("/userToOrder")
+    @ApiOperation("userToOrder")
+    @GetMapping("/userToOrder")
     public String userToOrder(){
         System.out.println("user 调用 order");
         String s =  orderFeign.userToOrder();
         return s;
+    }
+
+    @ApiImplicitParam(name="name", value = "用户名称", required = true, dataType = "String")
+    @PostMapping("/testSwagger1")
+    public String testSwagger1(String name){
+        return "name =" + name;
     }
 }

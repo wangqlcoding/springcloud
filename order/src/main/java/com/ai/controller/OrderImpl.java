@@ -1,7 +1,7 @@
 package com.ai.controller;
 
 import com.ai.orderapi.IOrderService;
-import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,8 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class OrderImpl implements IOrderService {
 
+    @Value("${server.port}")
+    private String port;
+
     @RequestMapping("/userToOrder")
     public String userToOrder() {
-        return "IOrderService 被调用";
+        return "端口为:" + port + " IOrderService 被调用";
     }
 }
