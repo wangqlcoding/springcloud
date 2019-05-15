@@ -46,8 +46,8 @@ public class UserController {
     }
 
     @ApiImplicitParam(name="name", value = "用户名称", required = true, dataType = "String")
-    @PostMapping("/testSwagger1")
-    public String testSwagger1(String name){
+    @PostMapping("/testSwagger2")
+    public String testSwagger2(String name){
         return "name =" + name;
     }
 }
