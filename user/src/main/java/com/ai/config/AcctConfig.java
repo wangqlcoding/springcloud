@@ -1,7 +1,7 @@
 package com.ai.config;
 
 /**
- * @Auther: wangql---bb
+ * @Auther: wangql---cc
  * @Date: 2019/4/24 21:19
  * @Description:
  */
